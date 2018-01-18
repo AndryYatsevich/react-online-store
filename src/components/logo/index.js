@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
+import logo from '../../img/logo.png'
 
 class Logo extends React.Component {
 
     render() {
         return (
             <div>
-                <img  style={{width:'160px'}} src={'ebay-189065_960_720.png'} />
+                <img  style={{width:'160px'}} src={logo} alt={'logo'}/>
             </div>
         );
     }
