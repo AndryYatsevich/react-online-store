@@ -5,10 +5,26 @@ import NavBar from './components/navbar';
 import Logo from './components/logo';
 import Search from './components/search';
 import User from './components/user';
+
 import {Grid, Row, Col} from 'react-flexbox-grid'
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            route: window.location.hash.substr(1)
+        }
+    }
+    componentDidMount() {
+        window.addEventListener('hashchange', () => {
+            this.setState({
+                route: window.location.hash.substr(1)
+            })
+        })
+    }
+
     render() {
+
         return (
             /*<div className="App">
                 <header className="App-header">
@@ -40,17 +56,14 @@ class App extends Component {
                             <User/>
 
                         </Col>
-                </Row>
+                    </Row>
                 <Row>
                     <Col xs={3}>
                         <Menu/>
 
                     </Col>
                     <Col xs={9}>
-                        <article>
-
-
-                        </article>
+                        {this.props.children}
                     </Col>
                 </Row>
 
