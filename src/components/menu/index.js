@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getMenuItem} from '../../selectors/menuSelectors';
 import {loadMenuItem} from "../../action/menuAction";
-import menuItem from "../../constants/menuItem";
 
 class Menu extends React.Component {
 

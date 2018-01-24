@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-/*import Catalog from './components/catalog';
+import Catalog from './components/catalog';
 import Faq from './components/faq';
-/!*import Home from './components/home';*!/
+import Home from './components/home';
 import AboutUs from './components/aboutus';
 import WorkWithUs from './components/workwithus';
 
-import { BrowserRouter as Router, Route  } from 'react-router-dom';*/
+import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
@@ -21,7 +21,27 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <Router>
+            <App>
+                <Switch>
+                    <Route exact path='/' component={App} />
+                    <Route path='/home' component={Home}/>
+                    <Route path='/catalog' component={Catalog} />
+                    <Route path='/faq' component={Faq} />
+                    <Route path='/about-us' component={AboutUs} />
+                    <Route path='/work-with-us' component={WorkWithUs} />
+
+                </Switch>
+            </App>
+            {/*<Route path='/' component={App}>
+                <Route path='/home' component={Home}/>
+                <Route path='/catalog' component={Catalog} />
+                <Route path='/faq' component={Faq} />
+                <Route path='/aboutus' component={AboutUs} />
+                <Route path='/workwithus' component={WorkWithUs} />
+            </Route>*/}
+
+        </Router>
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
