@@ -1,20 +1,13 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {getMenuItem} from '../../selectors/menuSelectors';
+import {loadMenuItem} from "../../action/menuAction";
+import menuItem from "../../constants/menuItem";
 
 class Menu extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = { menuItem: [
-            { id: 1, name: 'Computers'},
-            { id: 2, name: 'Phones'},
-            { id: 3, name: 'TVs'},
-            { id: 4, name: 'Game console'},
-            { id: 5, name: 'Servers'},
-            { id: 6, name: 'Soft'},
-            { id: 7, name: 'Books'}]};
-    }
 
     componentDidMount() {
-
+        this.props.loadMenuItem();
     }
 
 
@@ -22,7 +15,7 @@ class Menu extends React.Component {
         return (
             <div>
                 {
-                    this.state.menuItem.map(function(el){
+                    this.props.menuItem.map(function(el){
                         return <a><div key={el.id} className={'menu-item'}>{el.name}</div></a>
                     })
                 }
@@ -32,4 +25,19 @@ class Menu extends React.Component {
     }
 }
 
-export default Menu;
+const mapStateToProps = (state) =>({
+
+    menuItem: getMenuItem(state)
+
+});
+
+
+export default connect(
+    mapStateToProps,
+    {
+        loadMenuItem
+    }
+  //  mapDispatchToProps
+)(Menu);
+
+

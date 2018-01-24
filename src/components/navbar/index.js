@@ -22,7 +22,7 @@ class NavBar extends React.Component {
             <div className={'nav-bar'}>
                 {
                     this.state.navBarItem.map(function(el){
-                        return <Link key={el.id} className={'nav-bar-item'} to={el.link}>{el.name}</Link>
+                        return <a key={el.id} className={'nav-bar-item'} to={el.link}>{el.name}</a>
                     })
                 }
             </div>
