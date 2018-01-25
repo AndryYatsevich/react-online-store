@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -24,8 +25,7 @@ ReactDOM.render(
         <Router>
             <App>
                 <Switch>
-                    <Route exact path='/' component={App} />
-                    <Route path='/home' component={Home}/>
+                    <Route exact path='/' component={Home}/>
                     <Route path='/catalog' component={Catalog} />
                     <Route path='/faq' component={Faq} />
                     <Route path='/about-us' component={AboutUs} />

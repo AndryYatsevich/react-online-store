@@ -1,16 +1,16 @@
 import Axios from 'axios';
-import menuItem from '../constants/menuItem';
+import homeProducts from '../constants/homeProducts';
 
-export const loadMenuItem = () => (dispatch) => {
+export const loadHomeProducts = () => (dispatch) => {
 
     Axios
-        .get('/menu.json')
+        .get('/products.json')
         .then((res) => {
             dispatch({
-                type: menuItem.LOAD_MENU_ITEM,
-                payload: res.data
+                    type: homeProducts.LOAD_HOME_PRODUCTS,
+                    payload: res.data
 
-            }
+                }
 
             );
             console.log(res);

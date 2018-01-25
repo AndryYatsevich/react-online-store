@@ -7,7 +7,7 @@ class Logo extends React.Component {
     render() {
         return (
             <div>
-                <Link to='/home'><img  style={{width:'160px'}} src={logo} alt={'logo'}/></Link>
+                <Link to='/'><img  style={{width:'160px'}} src={logo} alt={'logo'}/></Link>
             </div>
         );
     }
