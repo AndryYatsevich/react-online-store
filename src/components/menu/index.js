@@ -5,39 +5,44 @@ import {loadMenuItem} from "../../action/menuAction";
 
 import Paper from 'material-ui/Paper';
 import MenuItem from 'material-ui/MenuItem'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Menu extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        const style = () => { {
-            display: 'inline-block',
-            margin: '16px 32px 16px 0'}
-        };
+
     }
+
     componentDidMount() {
         this.props.loadMenuItem();
     }
 
 
-/*    */
+    /*    */
 
     render() {
+        const style = {
+            display: 'inline-block',
+            margin: '16px 32px 16px 0',
+            width: '100%'
+        };
         return (
-            <div>
-                <Paper style={this.style}>
+            <MuiThemeProvider>
+                <Paper style={style}>
+                    {
+                        this.props.menuItem.map(function (el) {
+                           return <MenuItem primaryText={el.name}/>
+                        })
 
-                    <MenuItem primaryText={this.props.menuItem.map(function(el){
-                        return <a><div key={el.id} className={'menu-item'}>{el.name}</div></a>
-                    })} />
-
+                    }
                 </Paper>
-            </div>
+            </MuiThemeProvider>
 
         );
     }
 }
 
-const mapStateToProps = (state) =>({
+const mapStateToProps = (state) => ({
 
     menuItem: getMenuItem(state)
 
@@ -49,7 +54,7 @@ export default connect(
     {
         loadMenuItem
     }
-  //  mapDispatchToProps
+    //  mapDispatchToProps
 )(Menu);
 
 

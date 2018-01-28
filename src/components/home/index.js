@@ -14,12 +14,7 @@ class Home extends React.Component {
                 </Row>
                 <Row>
                     <Col xs={12}>
-
-                        <h1>Главная</h1>
-
                             <Product/>
-
-
                     </Col>
                 </Row>
 

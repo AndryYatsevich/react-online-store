@@ -58,11 +58,11 @@ class App extends Component {
                         </Col>
                     </Row>
                 <Row>
-                    <Col xs={3}>
+                    <Col xs={2}>
                         <Menu/>
 
                     </Col>
-                    <Col xs={9}>
+                    <Col xs={10}>
                         {this.props.children}
                     </Col>
                 </Row>

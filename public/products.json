@@ -5,21 +5,24 @@
       "name": "Comp",
       "description": "Суперский комп, пожалуй лучший",
       "price": 43,
-      "type": "computer"
+      "type": "computer",
+      "img": "/static/media/comp.jpg"
     },
     {
       "id": 2,
       "name": "Phone",
       "description": "Суперский телефон, пожалуй лучший",
       "price": 273,
-      "type": "phone"
+      "type": "phone",
+      "img": "/static/media/phone.jpg"
     },
     {
       "id": 3,
       "name": "TVs",
       "description": "Суперский телевизор, пожалуй лучший",
       "price": 643,
-      "type": "tv"
+      "type": "tv",
+      "img": "/static/media/tv.jpg"
     },
     {
       "id": 4,
