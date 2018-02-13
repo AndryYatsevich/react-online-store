@@ -1,5 +1,4 @@
 import React from 'react';
-import banner from '../../img/0Jrvgf38V8.jpg';
 import {connect} from 'react-redux';
 import {getProductsItem} from '../../selectors/homeProductsSelectors';
 import {loadHomeProducts} from "../../action/homeProductsAction";
@@ -8,6 +7,7 @@ import Subheader from 'material-ui/Subheader';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import {Link} from 'react-router-dom';
 
 class Product extends React.Component {
     componentDidMount() {
@@ -23,7 +23,7 @@ class Product extends React.Component {
                 justifyContent: 'space-around',
             },
             gridList: {
-                width: '100%',
+                width: '80%',
                 height: '100%',
                 overflowY: 'auto',
             },
@@ -34,51 +34,31 @@ class Product extends React.Component {
 
         return (
             <MuiThemeProvider>
-                <div style={styles.root}>
+                <div style={styles.root} className={'content'}>
                     <GridList
                         cellHeight={180}
                         style={styles.gridList}
+
                     >
                         <Subheader>Products</Subheader>
                         {this.props.products.map((el) => (
                             <GridTile
                                 key={el.id}
-                                title={el.name}
-                                subtitle={<span><b>{el.description}</b></span>}
+                                title={<Link to={`/products/${el.name}/${el.id}`} className={'menu'}>el.name</Link>}
+                                subtitle={<div className={"product-info"}><div><b>{el.description}</b></div> <div className={"product-price"}><b>${el.price}</b></div></div>}
+
                                 actionIcon={<FloatingActionButton style={styles.btn}>
+
                                     <ContentAdd/>
+
                                 </FloatingActionButton>}
                             >
-                                <img src={el.img}/>
+                                <img src={'../../img/' + el.img} alt={''}/>
                             </GridTile>
                         ))}
                     </GridList>
                 </div>
             </MuiThemeProvider>
-            /*<div className={'products-list'}>
-                {
-                    this.props.products.map(function (el) {
-                        return <div className={'product'}>
-                            <div className={'product-img'}>
-                                <img src={banner} alt={'product'} className={'product-img'}/>
-                            </div>
-                            <div className={'product-info'}>
-                                <div className={'product-title'}><a href={'#'}><h1>{el.name}</h1></a>
-                                </div>
-                                <div className={'product-description'}>{el.description}
-                                </div>
-                                <div className={'product-price-wrap'}>
-                                    <div className={'product-price'}><h3>${el.price}</h3></div>
-
-                                </div>
-                                <div className={'product-btn-add-wrap'}>
-                                    <a href={'#'} className={'product-btn-add'}>Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    })
-                }
-            </div>*/
         );
     }
 }

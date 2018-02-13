@@ -15,6 +15,7 @@ class App extends Component {
             route: window.location.hash.substr(1)
         }
     }
+
     componentDidMount() {
         window.addEventListener('hashchange', () => {
             this.setState({
@@ -24,7 +25,6 @@ class App extends Component {
     }
 
     render() {
-
         return (
             /*<div className="App">
                 <header className="App-header">
@@ -34,7 +34,7 @@ class App extends Component {
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>*/
-            <Grid fluid>
+            <Grid fluid className={'content2'}>
                 <Row>
                     <Col xs={3}>
                         <Logo/>
@@ -51,21 +51,27 @@ class App extends Component {
                             </Col>
                         </Row>
                     </Col>
-                        <Col xs={5}>
+                    <Col xs={5}>
 
-                            <User/>
+                        <User/>
 
-                        </Col>
-                    </Row>
-                <Row>
+                    </Col>
+                </Row>
+                <Row className={'content'}>
                     <Col xs={2}>
                         <Menu/>
 
                     </Col>
                     <Col xs={10}>
-                        {this.props.children}
+                            {this.props.children}
                     </Col>
                 </Row>
+                <Row  className={'footer'}>
+                    <Col xs={12}>
+                        <footer>OpenDev 2018</footer>
+                    </Col>
+                </Row>
+
 
             </Grid>
             /*</div>*/

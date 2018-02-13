@@ -1,3 +1,6 @@
+html, body{
+  height: 100%;
+}
 .App {
   text-align: center;
 }
@@ -28,16 +31,8 @@
 }
 
 
-.menu-item{
-  margin: 5px 0 5px 0;
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.menu-item:hover {
-  background-color: #045076;
-  cursor: pointer;
+.menu, .menu:hover{
+  text-decoration: none;
 }
 .search{
   width: 80%;
@@ -101,8 +96,9 @@
 }
 .product-info{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .product{
   max-height: 260px;
@@ -128,7 +124,8 @@
   justify-content: flex-end;
 }
 .product-price{
-
+font-size: 20px;
+  padding-right: 20px;
 
 }
 .product-btn-add-wrap{
@@ -142,4 +139,174 @@
   padding: 5px;
   border-radius: 5px;
   text-align: center;
+}
+.faq-item{
+  border-bottom: 1px solid gray;
+}
+.faq-question {
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.faq-question-wrap{
+  position: relative;
+  z-index: 10;
+  padding: 10px;
+  background-color: azure;
+}
+.faq-question:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.faq-question:hover::after {
+  content: 'more';
+  padding-left: 10px;
+  font-size: 14px;
+  color: gray;
+  text-shadow: 1px 1px 0px black;
+}
+.faq-question:before {
+  content: 'Q:';
+  color: red;
+  font-size: 24px;
+  padding-right: 20px;
+  text-shadow: 1px 1px 0px black;
+}
+.faq-answer-visible:before, .faq-answer-invisible:before{
+  content: 'A:';
+  color: green;
+  font-size: 24px;
+  padding-right: 20px;
+  text-shadow: 1px 1px 0px black;
+}
+.faq-answer{
+  position: relative;
+  z-index: 5;
+  height: 120px;
+}
+
+.faq-answer-visible{
+    padding: 10px;
+  display: block;
+  overflow: auto;
+  transition: all 0.3s ease;
+  animation: faq-answer-show 0.8s linear;
+}
+
+@keyframes faq-answer-show {
+  from {margin-top: -130px; opacity: 0;}
+  40% {margin-top: -80px; opacity: 0;}
+  75% {margin-top: -27px; opacity: 0.1;}
+  79% {margin-top: -22px; opacity: 0.5;}
+  85% {margin-top: -15px; opacity: 0.7;}
+  to {margin-top: 0px; opacity: 1;}
+}
+@keyframes faq-answer-hide {
+  from {margin-top: 0px; opacity: 1; display: block;}
+  10%{margin-top: -10px; opacity: 0.7; display: block;}
+  25%{margin-top: -25px; opacity: 0.3; display: block;}
+    40%{margin-top: -40px; opacity: 0.1; display: block;}
+    75%{margin-top: -80px; opacity: 0; display: block;}
+  to{margin-top: -130px;  opacity: 0;display: none;}
+}
+.faq-answer-invisible{
+    padding: 10px;
+  animation: faq-answer-hide 1s linear;
+}
+
+.vacancies-item{
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+
+
+}
+.content{
+position: relative;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+}
+.vacancies-name-wrap{
+  padding: 10px;
+}
+.vacancies-requirement{
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.vacancies-requirement-visible{
+  padding: 10px;
+  display: block;
+  overflow: auto;
+  transition: all 1.3s ease;
+  animation: vacancies-requirement-show 1.3s linear;
+
+}
+@keyframes vacancies-requirement-show {
+  from {max-height: 0; opacity: 0;}
+  to {max-height: 3000px; opacity: 1;}
+}
+.vacancies-requirement-invisible{
+  padding: 10px;
+  display: block;
+  overflow: auto;
+  transition: all 0.8s ease;
+  animation: vacancies-requirement-hide 0.8s linear;
+}
+@keyframes vacancies-requirement-hide {
+  from {max-height: 1000px; opacity: 1;}
+  to {max-height: 0px; opacity: 0;}
+}
+.footer{
+  position: fixed;
+  margin-bottom: 0;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  padding: 20px;
+  height: 50px;
+  background-color: #fff;
+  border-top: 1px solid black;
+  z-index: 25;
+
+}
+.catalog{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.catalog-img{
+  width: 200px;
+  height: 160px;
+  border-radius: 10%;
+  margin-right: 15px;
+}
+.catalog-name{
+}
+.catalog-item{
+  border-radius: 15px;
+  padding: 10px;
+  margin: 20px 25px 20px 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+ max-width: 400px;
+  min-width: 400px;
+  box-sizing: content-box ;
+  border: 2px solid  transparent;
+  transition: all 0.3s ease;
+}
+.catalog-item:hover{
+  border: 2px solid black;
+  transform: scale(1.2);
+  cursor: pointer;
+
+}
+.catalog-img-wrap{
+
 }

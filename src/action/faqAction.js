@@ -1,17 +1,17 @@
 import Axios from 'axios';
-import menuItem from '../constants/menuItem';
+import faqItem from '../constants/faqItem';
 
-export const loadMenuItem = () => (dispatch) => {
+export const loadQuestionItem = () => (dispatch) => {
 
     Axios
-        .get('/menu.json')
+        .get('/faq.json')
         .then((res) => {
             dispatch({
-                    type: menuItem.LOAD_MENU_ITEM,
+                    type: faqItem.LOAD_QUESTION_ITEM,
                     payload: res.data
-
                 }
             );
+            console.log(res.data);
         })
         .catch((err) => {
             console.log('An error occurred!', err);

@@ -6,7 +6,7 @@
       "description": "Суперский комп, пожалуй лучший",
       "price": 43,
       "type": "computer",
-      "img": "/static/media/comp.jpg"
+      "img": "comp.jpg"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "description": "Суперский телефон, пожалуй лучший",
       "price": 273,
       "type": "phone",
-      "img": "/static/media/phone.jpg"
+      "img": "phone.jpg"
     },
     {
       "id": 3,
@@ -22,42 +22,47 @@
       "description": "Суперский телевизор, пожалуй лучший",
       "price": 643,
       "type": "tv",
-      "img": "/static/media/tv.jpg"
+      "img": "tv.jpg"
     },
     {
       "id": 4,
       "name": "PlayStation",
       "description": "Суперский плэха, пожалуй лучший",
       "price": 1543,
-      "type": "gameConsole"
+      "type": "gameConsole",
+      "img": "playstation.jpg"
     },
     {
       "id": 5,
       "name": "Server",
       "description": "Суперский сервак, пожалуй лучший",
       "price": 2399,
-      "type": "server"
+      "type": "server",
+      "img": "server.jpg"
     },
     {
       "id": 6,
       "name": "Soft",
       "description": "Суперский софт, пожалуй лучший",
       "price": 2999,
-      "type": "soft"
+      "type": "soft",
+      "img": "software.jpg"
     },
     {
       "id": 7,
       "name": "Book",
       "description": "Суперская книга, пожалуй лучший",
       "price": 50,
-      "type": "book"
+      "type": "book",
+      "img": "books.jpg"
     },
     {
       "id": 8,
       "name": "Server",
       "description": "Так себе сервак, но зато не дорого",
       "price": 1350,
-      "type": "server"
+      "type": "server",
+      "img": "server.jpg"
     }
   ]
 }

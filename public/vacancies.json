@@ -1,0 +1,64 @@
+{
+  "vacancies": [
+    {
+      "name": "Java Engineer",
+      "responsibilities": [
+        "Participate in the design and development of high-performance business applications, from requirements analysis to production",
+        "Constantly improve software quality (evaluate and incorporate new libraries, tools and technologies; code reviews; refactoring; testing; etc.)",
+        "Analyze and improve application performance",
+        "Search for simple and robust solutions to complex tasks",
+        "Work in an Agile methodology environment where innovation, teamwork and creativity are the key for success",
+        "Collaborate with a team of developers, QA engineers, analysts located in St Petersburg, Russia and San Francisco, CA"
+      ],
+      "requirements": [
+        "3+ years in Software Development",
+        "Education in Computer Science or similar theoretical knowledge in CS: algorithms and complexity estimation, data structures, operating systems, programming languages",
+        "Excellent knowledge of Java platform (collections, concurrency, etc). Good understanding of JVM internals is a plus",
+        "Experience in enterprise application development (J2EE, Spring Source, etc) is a plus",
+        "Understanding of distributed architectures and scalability principles",
+        "Knowledge of Linux/Unix-based operating systems (bash/ssh/ps/grep etc.)",
+        "Understanding of SDLC and Agile methodologies in particular",
+        "Hands-on experience with developer daily basis tools such as IDE’s, compilers, debuggers, profilers, version control systems, bug tracking systems, build systems (ANT, Maven2, etc), code coverage and automated testing tools",
+        "Readiness for long onsite trips"
+      ]
+    },
+    {
+      "name": "UI Engineer",
+      "responsibilities": [
+        "Develop and implement the front-end architecture for web applications using JavaScript, CSS, and HTML5",
+        "Use suitable JavaScript tools and libraries to contribute to all the phases of the software development lifecycle (analysis, design, implementation, and QA)",
+        "Cooperate with the stakeholders and the product team to understand and document software requirements, and ensure application UI meets the functional requirements",
+        "Work with our UI/UX team and designers to develop dynamic and customized solutions for individual enterprise customers",
+        "Assist back-end developers to implement their server-side code identify and mitigate business and technology risks associated with architectural solutions",
+        "Work with business analysts to understand and implement complex business functionality"
+      ],
+      "requirements": [
+        "Bachelor’s or Master’s Degree in Computer Science/Engineering",
+        "5+ years experience doing UI/Front-end development with a solid knowledge of JavaScript / ES6 / ES7",
+        "3+ years experience in building web applications using the modern frameworks (e.g. React, Angular, Ember, Backbone, etc.)",
+        "Knowledge and experience with Node.js",
+        "Experience in building an architecture of SPA application",
+        "Experience with CSS pre-/post-processors",
+        "Experience with build tools (Grunt, Gulp, Webpack)"
+      ]
+    },
+    {
+      "name": "QA Engineer",
+      "responsibilities": [
+        "Analyze business and technical requirements",
+        "Review functional requirements",
+        "Write test cases and test documentation",
+        "Design test automation approach for system under tests",
+        "Perform acceptance testing",
+        "Develop UI and API automated tests (functional, integration, regression)"
+      ],
+      "requirements": [
+        "Experience in manual testing",
+        "Good interpersonal and communication skills",
+        "Good level of English",
+        "Strong analytical skills and experience in requirements analysis",
+        "Understanding of software testing methodologies, processes, and quality metrics"
+      ]
+    }
+  ]
+}

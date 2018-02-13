@@ -9,6 +9,7 @@ import Faq from './components/faq';
 import Home from './components/home';
 import AboutUs from './components/aboutus';
 import WorkWithUs from './components/workwithus';
+import Category from './components/catagory';
 
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -26,6 +27,8 @@ ReactDOM.render(
             <App>
                 <Switch>
                     <Route exact path='/' component={Home}/>
+                    <Route path='/products/:category' component={Category} />
+                    <Route path='/product/:category/:id' component={Faq} />
                     <Route path='/catalog' component={Catalog} />
                     <Route path='/faq' component={Faq} />
                     <Route path='/about-us' component={AboutUs} />

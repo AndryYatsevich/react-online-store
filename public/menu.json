@@ -2,31 +2,38 @@
   "menuItem": [
     {
       "id": 1,
-      "name": "Computers"
+      "name": "Computers",
+      "img": "comp.jpg"
     },
     {
       "id": 2,
-      "name": "Phones"
+      "name": "Phones",
+      "img": "phone.jpg"
     },
     {
       "id": 3,
-      "name": "TVs"
+      "name": "TVs",
+      "img": "tv.jpg"
     },
     {
       "id": 4,
-      "name": "Game console"
+      "name": "Game console",
+      "img": "playstation.jpg"
     },
     {
       "id": 5,
-      "name": "Servers"
+      "name": "Servers",
+      "img": "server.jpg"
     },
     {
       "id": 6,
-      "name": "Soft"
+      "name": "Soft",
+      "img": "software.jpg"
     },
     {
       "id": 7,
-      "name": "Books"
+      "name": "Books",
+      "img": "books.jpg"
     }
 
   ]

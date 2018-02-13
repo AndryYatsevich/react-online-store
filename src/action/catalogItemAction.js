@@ -1,17 +1,19 @@
 import Axios from 'axios';
-import menuItem from '../constants/menuItem';
+import catalogItem from '../constants/catalogItem';
 
-export const loadMenuItem = () => (dispatch) => {
+export const loadCatalog = () => (dispatch) => {
 
     Axios
         .get('/menu.json')
         .then((res) => {
             dispatch({
-                    type: menuItem.LOAD_MENU_ITEM,
+                    type: catalogItem.LOAD_CATALOG_ITEM,
                     payload: res.data
 
                 }
+
             );
+            console.log(res);
         })
         .catch((err) => {
             console.log('An error occurred!', err);
