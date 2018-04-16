@@ -27,8 +27,7 @@ class Menu extends React.Component {
                 <Paper style={style}>
                     {
                         this.props.menuItem.map(function (el) {
-
-                           return <Link to={`/products/${el.name}`} key={el.id} className={'menu'}>
+                           return <Link to={`/products/${el.type}`} key={el.id} className={'menu'}>
                            <MenuItem primaryText={el.name} />
 
                            </Link>
