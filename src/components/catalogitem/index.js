@@ -6,7 +6,7 @@ class CatalogItem extends React.Component {
         return (
             <div className={'catalog'}>
                 {this.props.product.map((el) => {
-                    return <div className={'catalog-item'}>
+                    return <div className={'catalog-item'} key={el.id}>
                             <div className={'catalog-img-wrap'}><img className={'catalog-img'} src={'../../img/' + el.img} alt={''}/></div>
                             <div className={'catalog-name'}>{el.name}</div>
                         </div>
