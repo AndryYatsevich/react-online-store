@@ -3,37 +3,45 @@
     {
       "id": 1,
       "name": "Computers",
-      "img": "comp.jpg"
+      "img": "comp.jpg",
+      "type": "computers"
     },
     {
       "id": 2,
       "name": "Phones",
-      "img": "phone.jpg"
+      "img": "phone.jpg",
+      "type": "phone"
     },
     {
       "id": 3,
       "name": "TVs",
-      "img": "tv.jpg"
+      "img": "tv.jpg",
+      "type": "tv"
+
     },
     {
       "id": 4,
       "name": "Game console",
-      "img": "playstation.jpg"
+      "img": "playstation.jpg",
+      "type": "gameConsole"
     },
     {
       "id": 5,
       "name": "Servers",
-      "img": "server.jpg"
+      "img": "server.jpg",
+      "type": "server"
     },
     {
       "id": 6,
       "name": "Soft",
-      "img": "software.jpg"
+      "img": "software.jpg",
+      "type": "soft"
     },
     {
       "id": 7,
       "name": "Books",
-      "img": "books.jpg"
+      "img": "books.jpg",
+      "type": "book"
     }
 
   ]

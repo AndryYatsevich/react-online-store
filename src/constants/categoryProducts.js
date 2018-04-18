@@ -1,0 +1,3 @@
+export default {
+    LOAD_CATEGORY_PRODUCTS: 'LOAD_CATEGORY_PRODUCTS',
+};

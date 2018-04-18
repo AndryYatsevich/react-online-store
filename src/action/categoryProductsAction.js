@@ -1,13 +1,13 @@
 import Axios from 'axios';
-import homeProducts from '../constants/homeProducts';
+import categoryProducts from '../constants/categoryProducts';
 
-export const loadHomeProducts = () => (dispatch) => {
+export const loadCategoryProducts = () => (dispatch) => {
 
     Axios
         .get('/products.json')
         .then((res) => {
             dispatch({
-                    type: homeProducts.LOAD_HOME_PRODUCTS,
+                    type: categoryProducts.LOAD_CATEGORY_PRODUCTS,
                     payload: res.data
 
                 }

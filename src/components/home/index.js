@@ -14,6 +14,7 @@ class Home extends React.Component {
                 </Row>
                 <Row>
                     <Col xs={12}>
+
                             <Product/>
                     </Col>
                 </Row>
