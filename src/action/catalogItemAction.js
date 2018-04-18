@@ -13,7 +13,7 @@ export const loadCatalog = () => (dispatch) => {
                 }
 
             );
-            console.log(res);
+
         })
         .catch((err) => {
             console.log('An error occurred!', err);

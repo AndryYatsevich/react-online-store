@@ -10,6 +10,7 @@ import Home from './components/home';
 import AboutUs from './components/aboutus';
 import WorkWithUs from './components/workwithus';
 import Category from './components/category';
+import Cart from './components/cart';
 
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -33,7 +34,7 @@ ReactDOM.render(
                     <Route path='/faq' component={Faq} />
                     <Route path='/about-us' component={AboutUs} title="Takoe"/>
                     <Route path='/work-with-us' component={WorkWithUs} />
-
+                    <Route path='/cart' component={Cart} />
                 </Switch>
             </App>
 
