@@ -3,12 +3,11 @@ import cartItem from '../constants/cartItem';
 
 
 
-export function addProductToCartAction(productCart){
+export function deleteProductToCartAction(productCart){
     console.log('action', productCart);
     console.log(cartItem);
     return {
-        type: cartItem.ADD_CART_ITEM,
+        type: cartItem.DELETE_CART_ITEM,
         payload: productCart
     };
 }
-

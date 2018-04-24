@@ -1,12 +1,14 @@
 import cartItem from '../constants/cartItem';
 
 export default (state = [], action) => {
-    console.log('reducer', action.payload);
-    console.log(state);
     switch (action.type) {
         case cartItem.ADD_CART_ITEM:
-
-            return {...state, productCart: action.payload.productCart};
+            console.log(state);
+            return [...state, {productCount: 1, product: action.payload}];
+        case (cartItem.DELETE_CART_ITEM):
+            console.log('reducer delete сработал', action.payload, state.id);
+            const productId = action.payload;
+            return state.filter(item => item.product.id !== productId);
         default:
             console.log('reducer', action.payload, );
             return state;

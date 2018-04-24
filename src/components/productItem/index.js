@@ -6,17 +6,21 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { addProductToCartAction } from '../../action/addProductToCartAction';
 import {connect} from "react-redux";
 import {addProductToCartItem} from '../../selectors/cartSelector';
+import ReactDOM from 'react-dom';
 import	{	bindActionCreators	}	from	'redux';
 
 
 class ProductItem extends React.Component {
+    constructor(props) {
+        super(props);
 
+    }
 
-    addToCart () {
-        console.log(this);
-        console.log('В корзину добавлен: ' + this.name + ', который стоит ' + this.price);
-       addProductToCartAction(this);
-}
+    addToCart = (el) => {
+        console.log(' this.state', this.state, el);
+        this.props.addProductToCartAction(el);
+};
+
 
     render() {
         return (
@@ -32,7 +36,7 @@ class ProductItem extends React.Component {
                             </div>
                             <div>Цена: {el.price} р.</div>
 
-                            <div><FloatingActionButton onClick={this.addToCart.bind(el)}>
+                            <div><FloatingActionButton onClick={() => this.addToCart(el)}>
                                 <ContentAdd/>
 
                             </FloatingActionButton></div>
@@ -45,7 +49,7 @@ class ProductItem extends React.Component {
     }
 }
 
-//export default ProductItem;
+
 
 
 const mapStateToProps = (state) => ({
@@ -55,7 +59,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-      addProductToCartAction: bindActionCreators(addProductToCartAction,	dispatch)
+      addProductToCartAction: product => (dispatch(addProductToCartAction(product)))
     });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductItem);
