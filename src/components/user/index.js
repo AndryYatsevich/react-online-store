@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class User extends React.Component {
     constructor(props){
@@ -14,6 +15,7 @@ class User extends React.Component {
     render() {
         return (
             <div className={'user'}>
+                <Link to={'/cart'} key={'cart'}>
                 <div>Welcome, {this.state.name}!</div>
                 <div className={'wrap-user-info'}>
                     <div className={'user-avatar'}>Картинка</div>
@@ -23,7 +25,7 @@ class User extends React.Component {
                     </div>
 
                 </div>
-
+                </Link>
 
             </div>
 

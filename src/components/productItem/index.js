@@ -3,8 +3,24 @@ import {Link} from 'react-router-dom';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { addProductToCartAction } from '../../action/addProductToCartAction';
+import {connect} from "react-redux";
+import {addProductToCartItem} from '../../selectors/cartSelector';
+import ReactDOM from 'react-dom';
+import	{	bindActionCreators	}	from	'redux';
+
 
 class ProductItem extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
+
+    addToCart = (el) => {
+        console.log(' this.state', this.state, el);
+        this.props.addProductToCartAction(el);
+};
+
 
     render() {
         return (
@@ -19,7 +35,8 @@ class ProductItem extends React.Component {
                             <div>{el.shortInformation}
                             </div>
                             <div>Цена: {el.price} р.</div>
-                            <div><FloatingActionButton>
+
+                            <div><FloatingActionButton onClick={() => this.addToCart(el)}>
                                 <ContentAdd/>
 
                             </FloatingActionButton></div>
@@ -32,4 +49,17 @@ class ProductItem extends React.Component {
     }
 }
 
-export default ProductItem;
+
+
+
+const mapStateToProps = (state) => ({
+
+    productCart: addProductToCartItem(state)
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+      addProductToCartAction: product => (dispatch(addProductToCartAction(product)))
+    });
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductItem);
