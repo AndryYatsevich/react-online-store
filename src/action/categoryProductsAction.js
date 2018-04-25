@@ -3,6 +3,8 @@ import categoryProducts from '../constants/categoryProducts';
 
 export const loadCategoryProducts = () => (dispatch) => {
 
+
+
     Axios
         .get('/products.json')
         .then((res) => {

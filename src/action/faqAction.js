@@ -3,8 +3,14 @@ import faqItem from '../constants/faqItem';
 
 export const loadQuestionItem = () => (dispatch) => {
 
-    Axios
-        .get('/faq.json')
+    let promise = new Promise((resolve, reject) => {
+          resolve(Axios.get('/faq.json'));
+
+          reject(new Error("error"));
+
+    });
+
+    promise
         .then((res) => {
             dispatch({
                     type: faqItem.LOAD_QUESTION_ITEM,

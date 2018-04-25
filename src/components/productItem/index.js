@@ -17,8 +17,35 @@ class ProductItem extends React.Component {
     }
 
     addToCart = (el) => {
-        console.log(' this.state', this.state, el);
-        this.props.addProductToCartAction(el);
+        console.log('addProduct this.props: ', this.props.loadProductCart);
+        if(this.props.loadProductCart.length !== 0){
+            for (let i = 0; i < this.props.loadProductCart.length; i++) {
+                console.log('el.id: ', el.id, 'this.props.loadProductCart[i].product.id', this.props.loadProductCart[i].product);
+                if(el.id === this.props.loadProductCart[i].product.product.id)  {
+
+                    this.props.loadProductCart[i].product.productCount = this.props.loadProductCart[i].product.productCount + 1;
+                    console.log('ура нах!', this.props.loadProductCart[i].product);
+
+                    this.props.addProductToCartAction(this.props.loadProductCart[i].product);
+                } else {
+                    let addedProduct = {
+                        productCount: 1,
+                        product: el
+                    };
+                    console.log(' this.state', this.state, el);
+                    this.props.addProductToCartAction(addedProduct);
+                }
+            }
+        } else {
+            let addedProduct = {
+                productCount: 1,
+                product: el
+            };
+            console.log(' this.state', this.state, el);
+            this.props.addProductToCartAction(addedProduct);
+        }
+
+
 };
 
 
@@ -53,7 +80,7 @@ class ProductItem extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-
+    loadProductCart: state.loadProductCart,
     productCart: addProductToCartItem(state)
 
 });
