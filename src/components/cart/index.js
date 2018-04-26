@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {connect} from "react-redux";
-import {deleteProductToCartAction} from "../../action/deleteProductToCartAction";
+import {deleteProductToCartAction, updateProductToCartAction} from "../../action/addProductToCartAction";
 import FlatButton from 'material-ui/FlatButton';
 import {
     Table,
@@ -35,11 +35,19 @@ class Cart extends React.Component {
 
     deleteProduct = (el) => {
         console.log(el, 'deleteProduct', this.state);
-
-
+    if (el.productCount !== 1) {
+        el.productCount = el.productCount - 1;
+        this.props.updateProductToCartAction(el);
+    } else {
         this.props.deleteProductToCartAction(el);
-    };
+    }
 
+
+    };
+    addMoreProduct = (el) => {
+        el.productCount = el.productCount + 1;
+        this.props.updateProductToCartAction(el);
+    };
     render() {
         const style = {
             padding: '10px',
@@ -50,7 +58,7 @@ class Cart extends React.Component {
         this.state.resultPrice = 0;
         return (
             <MuiThemeProvider>
-                {this.props.productCart.length === 0 ? <div>Корзина пуста{console.log('takoe')}</div> :
+                {this.props.productCart.length === 0 ?<Paper style={style} zDepth={1} className={'content'}> <div>Корзина пуста{console.log('takoe')}</div> </Paper> :
 
 
                     <Paper style={style} zDepth={1} className={'content'}>
@@ -73,6 +81,7 @@ class Cart extends React.Component {
                                         <TableHeaderColumn tooltip="Название">Название</TableHeaderColumn>
                                         <TableHeaderColumn tooltip="Описание">Описание товара</TableHeaderColumn>
                                         <TableHeaderColumn tooltip="Цена">Цена</TableHeaderColumn>
+                                        <TableHeaderColumn tooltip="Количество">Количество</TableHeaderColumn>
                                         <TableHeaderColumn tooltip=""></TableHeaderColumn>
                                     </TableRow>
                                 </TableHeader>
@@ -82,18 +91,26 @@ class Cart extends React.Component {
                                     showRowHover={this.state.showRowHover}
                                     stripedRows={this.state.stripedRows}
                                 >
-                                    {this.props.productCart.map((el) => (
+                                    {this.props.productCart.map((el) => {
+                                        for(let i = 0; i < this.props.products.products.length; i++){
+                                            if(el.productId === this.props.products.products[i].id) {
+                                                return   <TableRow key={el.productId}>
+                                                    {console.log(el, el.index)}
+                                                    <TableRowColumn>{this.props.products.products[i].name}</TableRowColumn>
+                                                    <TableRowColumn>{this.props.products.products[i].description}</TableRowColumn>
+                                                    <TableRowColumn>{this.props.products.products[i].price}</TableRowColumn>
+                                                    <TableRowColumn>{el.productCount}</TableRowColumn>
+                                                    <TableRowColumn><FlatButton label="Удалить" secondary={true} onClick={() => this.deleteProduct(el)}/>
+                                                    <FlatButton label="Добавить" secondary={true} onClick={() => this.addMoreProduct(el)}/>
+                                                    </TableRowColumn>
+                                                    {console.log(this.props.products    )}
+                                                    {this.state.resultPrice     += this.props.products.products[i].price * el.productCount}
+                                                </TableRow>
+                                            }
 
-                                        <TableRow key={el.product.id}>
-                                            {console.log(el, el.index)}
-                                            <TableRowColumn>{el.product.name}</TableRowColumn>
-                                            <TableRowColumn>{el.product.description}</TableRowColumn>
-                                            <TableRowColumn>{el.product.price}</TableRowColumn>
-                                            <TableRowColumn><FlatButton label="Удалить" secondary={true} onClick={() => this.deleteProduct(el.product.id)}/></TableRowColumn>
+                                    }
 
-                                            {this.state.resultPrice += el.product.price * el.productCount}
-                                        </TableRow>
-                                    ))}s
+                                    })}
                                 </TableBody>
 
                             </Table>
@@ -108,12 +125,14 @@ class Cart extends React.Component {
 
 const mapStateToProps = (state) => ({
 
-    productCart: state.loadProductCart
+    productCart: state.loadProductCart,
+    products: state.loadCategory
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    deleteProductToCartAction: product => (dispatch(deleteProductToCartAction(product)))
+    deleteProductToCartAction: product => (dispatch(deleteProductToCartAction(product))),
+    updateProductToCartAction: product => (dispatch(updateProductToCartAction(product)))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

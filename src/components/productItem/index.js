@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { addProductToCartAction } from '../../action/addProductToCartAction';
+import { addProductToCartAction, updateProductToCartAction } from '../../action/addProductToCartAction';
 import {connect} from "react-redux";
 import {addProductToCartItem} from '../../selectors/cartSelector';
 import ReactDOM from 'react-dom';
@@ -17,34 +17,27 @@ class ProductItem extends React.Component {
     }
 
     addToCart = (el) => {
-        console.log('addProduct this.props: ', this.props.loadProductCart);
+        console.log(el);
+        let addedProduct = new Object(null);
+
+
+        addedProduct.productCount = 1;
+        addedProduct.productId = el.id;
+
         if(this.props.loadProductCart.length !== 0){
+
             for (let i = 0; i < this.props.loadProductCart.length; i++) {
-                console.log('el.id: ', el.id, 'this.props.loadProductCart[i].product.id', this.props.loadProductCart[i].product);
-                if(el.id === this.props.loadProductCart[i].product.product.id)  {
 
-                    this.props.loadProductCart[i].product.productCount = this.props.loadProductCart[i].product.productCount + 1;
-                    console.log('ура нах!', this.props.loadProductCart[i].product);
-
-                    this.props.addProductToCartAction(this.props.loadProductCart[i].product);
-                } else {
-                    let addedProduct = {
-                        productCount: 1,
-                        product: el
-                    };
-                    console.log(' this.state', this.state, el);
-                    this.props.addProductToCartAction(addedProduct);
+                if(el.id === this.props.loadProductCart[i].productId)  {
+                   addedProduct.productCount = this.props.loadProductCart[i].productCount + 1;
+                   addedProduct.productId = el.id;
                 }
             }
-        } else {
-            let addedProduct = {
-                productCount: 1,
-                product: el
-            };
-            console.log(' this.state', this.state, el);
-            this.props.addProductToCartAction(addedProduct);
         }
 
+        addedProduct.productCount !== 1 ?
+            this.props.updateProductToCartAction(addedProduct) :
+            this.props.addProductToCartAction(addedProduct)
 
 };
 
@@ -86,7 +79,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-      addProductToCartAction: product => (dispatch(addProductToCartAction(product)))
+      addProductToCartAction: product => (dispatch(addProductToCartAction(product))),
+    updateProductToCartAction: product => (dispatch(updateProductToCartAction(product)))
     });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductItem);
