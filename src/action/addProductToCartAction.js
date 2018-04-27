@@ -11,6 +11,7 @@ export function addProductToCartAction(productCart){
 }
 
 export function updateProductToCartAction(productCart){
+    console.log('productCart  ', productCart);
     return {
         type: cartItem.UPDATE_CART_ITEM,
         payload: productCart

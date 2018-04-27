@@ -34,19 +34,37 @@ class Cart extends React.Component {
     }
 
     deleteProduct = (el) => {
-        console.log(el, 'deleteProduct', this.state);
-    if (el.productCount !== 1) {
-        el.productCount = el.productCount - 1;
-        this.props.updateProductToCartAction(el);
+
+        let productId = el.id;
+        let productCart = {};
+        for (let key in this.props.productCart) {
+            productCart[key] = this.props.productCart[key];
+        }
+
+        console.log(el, 'deleteProduct-----------------------------------------------', this.state, productCart[productId]);
+    if (productCart[productId] > 1) {
+
+        productCart[productId] -= 1;
+        this.props.updateProductToCartAction(productCart);
+
     } else {
-        this.props.deleteProductToCartAction(el);
+        console.log('до',productCart);
+        delete productCart[productId];
+        console.log('после', productCart);
+        this.props.deleteProductToCartAction(productCart);
     }
 
 
     };
     addMoreProduct = (el) => {
-        el.productCount = el.productCount + 1;
-        this.props.updateProductToCartAction(el);
+        let productId = el.id;
+        let productCart = {};
+        for (let key in this.props.productCart) {
+            productCart[key] = this.props.productCart[key];
+        }
+
+        productCart[productId] += 1;
+        this.props.updateProductToCartAction(productCart);
     };
     render() {
         const style = {
@@ -58,7 +76,8 @@ class Cart extends React.Component {
         this.state.resultPrice = 0;
         return (
             <MuiThemeProvider>
-                {this.props.productCart.length === 0 ?<Paper style={style} zDepth={1} className={'content'}> <div>Корзина пуста{console.log('takoe')}</div> </Paper> :
+                {console.log('----------------------------------------------', this.props.productCart, this.props.productCart.length, Object.keys(this.props.productCart).length === 0)}
+                { Object.keys(this.props.productCart).length === 0 ?<Paper style={style} zDepth={1} className={'content'}> <div>Корзина пуста{console.log('takoe')}</div> </Paper> :
 
 
                     <Paper style={style} zDepth={1} className={'content'}>
@@ -91,25 +110,26 @@ class Cart extends React.Component {
                                     showRowHover={this.state.showRowHover}
                                     stripedRows={this.state.stripedRows}
                                 >
-                                    {this.props.productCart.map((el) => {
-                                        for(let i = 0; i < this.props.products.products.length; i++){
-                                            if(el.productId === this.props.products.products[i].id) {
-                                                return   <TableRow key={el.productId}>
-                                                    {console.log(el, el.index)}
-                                                    <TableRowColumn>{this.props.products.products[i].name}</TableRowColumn>
-                                                    <TableRowColumn>{this.props.products.products[i].description}</TableRowColumn>
-                                                    <TableRowColumn>{this.props.products.products[i].price}</TableRowColumn>
-                                                    <TableRowColumn>{el.productCount}</TableRowColumn>
+
+                                    {this.props.products.products.map((el) => {
+                                        for (let key in this.props.productCart){
+
+                                            if(el.id.toString() === key) {
+                                                let count = this.props.productCart[key];
+                                                console.log(count, this.props.productCart[key]);
+                                                  return <TableRow key={el.id}>
+                                                    <TableRowColumn>{el.name}</TableRowColumn>
+                                                    <TableRowColumn>{el.description}</TableRowColumn>
+                                                    <TableRowColumn>{el.price}</TableRowColumn>
+                                                    <TableRowColumn>{count}</TableRowColumn>
                                                     <TableRowColumn><FlatButton label="Удалить" secondary={true} onClick={() => this.deleteProduct(el)}/>
-                                                    <FlatButton label="Добавить" secondary={true} onClick={() => this.addMoreProduct(el)}/>
+                                                        <FlatButton label="Добавить" secondary={true} onClick={() => this.addMoreProduct(el)}/>
                                                     </TableRowColumn>
-                                                    {console.log(this.props.products    )}
-                                                    {this.state.resultPrice     += this.props.products.products[i].price * el.productCount}
+
+                                                      {this.state.resultPrice += el.price * count}
                                                 </TableRow>
-                                            }
 
-                                    }
-
+                                            }                                        }
                                     })}
                                 </TableBody>
 

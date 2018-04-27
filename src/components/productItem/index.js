@@ -18,27 +18,24 @@ class ProductItem extends React.Component {
 
     addToCart = (el) => {
         console.log(el);
-        let addedProduct = new Object(null);
+        let productId = el.id;
+        let cart = {};
+        cart[productId] = 1;
+        console.log(cart);
+        let productCart = this.props.loadProductCart;
 
+        if(Object.keys(productCart).length !== 0){
+                if(el.id in productCart)  {
 
-        addedProduct.productCount = 1;
-        addedProduct.productId = el.id;
-
-        if(this.props.loadProductCart.length !== 0){
-
-            for (let i = 0; i < this.props.loadProductCart.length; i++) {
-
-                if(el.id === this.props.loadProductCart[i].productId)  {
-                   addedProduct.productCount = this.props.loadProductCart[i].productCount + 1;
-                   addedProduct.productId = el.id;
+                    productCart[productId] += 1;
+                    console.log(cart, productCart);
+                    this.props.updateProductToCartAction(productCart);
+                }else {
+                    this.props.addProductToCartAction(cart);
                 }
-            }
+        }else {
+            this.props.addProductToCartAction(cart);
         }
-
-        addedProduct.productCount !== 1 ?
-            this.props.updateProductToCartAction(addedProduct) :
-            this.props.addProductToCartAction(addedProduct)
-
 };
 
 
