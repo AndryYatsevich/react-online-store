@@ -40,10 +40,11 @@ class ProductItem extends React.Component {
 
 
     render() {
-        return (
+        return (<MuiThemeProvider>
+                {console.log('this.props.product ===============================================================>',this.props.product)}
             <div className={'category-item'}>
                 {this.props.product.map((el) => {
-                    return <MuiThemeProvider>
+                    return <MuiThemeProvider key={el.id}>
                         <div className={'category-img-wrap'}><img className={'category-img'}
                                                                   src={'../../img/' + el.img} alt={''}/></div>
                         <div>
@@ -62,6 +63,7 @@ class ProductItem extends React.Component {
 
                 })}
             </div>
+            </MuiThemeProvider>
         )
     }
 }

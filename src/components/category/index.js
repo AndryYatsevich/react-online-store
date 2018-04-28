@@ -38,7 +38,7 @@ class Category extends React.Component {
             content = (<div>{this.props.products.map((el) => {
                     console.log(this.props.match.params.id, el.id, this.props.match.params.id == el.id);
                     if (this.props.match.params.id == el.id) {
-                        return <div className={"product-item"}>
+                        return <div className={"product-item"} key={el.id}>
                             <div className={"wrap-product-img"}><img className={"product-img"} src={'../../img/' + el.img} alt={''}/></div>
                             <div>
                                 <div><h1>{el.name}</h1></div>
