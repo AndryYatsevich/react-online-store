@@ -1,18 +1,38 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
 
 class User extends React.Component {
     constructor(props){
         super(props);
-        this.state = { name: 'User_name', count: 3, price: '$432,32'};
-    }
-
-    componentDidMount() {
+        this.state = { name: 'User_name', cart: this.props.cart, price: 0, count: 0};
 
     }
 
+    cartInfo = () => {
+
+        let cartCount = 0;
+        let cartPrice = 0;
+         this.props.products.products.map((el) => {
+            for (let key in this.props.cart){
+                if(el.id.toString() === key) {
+                    let countProduct = this.props.cart[key];
+                    cartCount += countProduct;
+                    cartPrice += el.price * countProduct;
+                }
+
+            }
+        });
+        console.log('cartCount', cartCount, 'cartPrice ', cartPrice);
+        return <div>
+            <div>Количество товара: {cartCount}</div>
+            <div>Общая стоимость: ${cartPrice}</div>
+        </div>
+
+    };
 
     render() {
+
         return (
             <div className={'user'}>
                 <Link to={'/cart'} key={'cart'}>
@@ -21,7 +41,7 @@ class User extends React.Component {
                     <div className={'user-avatar'}>Картинка</div>
                     <div className={'user-info'}>
                         My cart <br />
-                        {this.state.count} - {this.state.price}
+                        {this.cartInfo()}
                     </div>
 
                 </div>
@@ -33,4 +53,9 @@ class User extends React.Component {
     }
 }
 
-export default User;
+const mapStateToProps = (state) => ({
+    cart: state.loadProductCart,
+    products: state.loadCategory
+});
+
+export default connect(mapStateToProps)(User);

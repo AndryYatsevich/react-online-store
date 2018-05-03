@@ -17,23 +17,28 @@ class ProductItem extends React.Component {
     }
 
     addToCart = (el) => {
-        console.log(el);
         let productId = el.id;
         let cart = {};
         cart[productId] = 1;
-        console.log(cart);
-        let productCart = this.props.loadProductCart;
-
+        let productCart = {};
+        for (let key in this.props.productCart) {
+            productCart[key] = this.props.productCart[key];
+        }
         if(Object.keys(productCart).length !== 0){
                 if(el.id in productCart)  {
-
-                    productCart[productId] += 1;
-                    console.log(cart, productCart);
-                    this.props.updateProductToCartAction(productCart);
+                    for (let key in this.props.productCart) {
+                        cart[key] = this.props.productCart[key];
+                    }
+                    cart[productId] += 1;
+                    console.log('Добавляем товар, который уже есть в корзине  ', cart);
+                    this.props.updateProductToCartAction(cart);
                 }else {
-                    this.props.addProductToCartAction(cart);
+                    this.props.updateProductToCartAction(Object.assign(productCart, cart));
                 }
         }else {
+
+
+            console.log('добавляем первый товар  ', cart);
             this.props.addProductToCartAction(cart);
         }
 };
@@ -41,7 +46,7 @@ class ProductItem extends React.Component {
 
     render() {
         return (<MuiThemeProvider>
-                {console.log('this.props.product ===============================================================>',this.props.product)}
+
             <div className={'category-item'}>
                 {this.props.product.map((el) => {
                     return <MuiThemeProvider key={el.id}>
@@ -72,13 +77,13 @@ class ProductItem extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    loadProductCart: state.loadProductCart,
-    productCart: addProductToCartItem(state)
+    products: state.loadCategory,
+    productCart: state.loadProductCart,
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-      addProductToCartAction: product => (dispatch(addProductToCartAction(product))),
+    addProductToCartAction: product => (dispatch(addProductToCartAction(product))),
     updateProductToCartAction: product => (dispatch(updateProductToCartAction(product)))
     });
 

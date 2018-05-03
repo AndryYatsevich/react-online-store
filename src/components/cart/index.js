@@ -41,16 +41,13 @@ class Cart extends React.Component {
             productCart[key] = this.props.productCart[key];
         }
 
-        console.log(el, 'deleteProduct-----------------------------------------------', this.state, productCart[productId]);
     if (productCart[productId] > 1) {
 
         productCart[productId] -= 1;
         this.props.updateProductToCartAction(productCart);
 
     } else {
-        console.log('до',productCart);
         delete productCart[productId];
-        console.log('после', productCart);
         this.props.deleteProductToCartAction(productCart);
     }
 
@@ -62,7 +59,6 @@ class Cart extends React.Component {
         for (let key in this.props.productCart) {
             productCart[key] = this.props.productCart[key];
         }
-
         productCart[productId] += 1;
         this.props.updateProductToCartAction(productCart);
     };
@@ -76,8 +72,7 @@ class Cart extends React.Component {
         this.state.resultPrice = 0;
         return (
             <MuiThemeProvider>
-                {console.log('----------------------------------------------', this.props.productCart, this.props.productCart.length, Object.keys(this.props.productCart).length === 0)}
-                { Object.keys(this.props.productCart).length === 0 ?<Paper style={style} zDepth={1} className={'content'}> <div>Корзина пуста{console.log('takoe')}</div> </Paper> :
+                { Object.keys(this.props.productCart).length === 0 ?<Paper style={style} zDepth={1} className={'content'}> <div>Корзина пуста</div> </Paper> :
 
 
                     <Paper style={style} zDepth={1} className={'content'}>
@@ -116,8 +111,7 @@ class Cart extends React.Component {
 
                                             if(el.id.toString() === key) {
                                                 let count = this.props.productCart[key];
-                                                console.log(count, this.props.productCart[key]);
-                                                  return <TableRow key={el.id}>
+                                                   return <TableRow key={el.id}>
                                                     <TableRowColumn>{el.name}</TableRowColumn>
                                                     <TableRowColumn>{el.description}</TableRowColumn>
                                                     <TableRowColumn>{el.price}</TableRowColumn>
