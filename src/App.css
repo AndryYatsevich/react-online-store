@@ -246,8 +246,8 @@ position: relative;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
- max-width: 400px;
-  min-width: 400px;
+  max-width: 350px;
+  min-width: 250px;
   box-sizing: content-box ;
   border: 2px solid  transparent;
   transition: all 0.3s ease;
@@ -272,4 +272,9 @@ position: relative;
 }
 .wrap-product-img{
   width: 60%;
+}
+.homeProduct{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }

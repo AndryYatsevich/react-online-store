@@ -14,7 +14,7 @@ class Menu extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadMenuItem('/menu.json');
+        this.props.loadMenuItem();
     }
 
 
@@ -29,7 +29,6 @@ class Menu extends React.Component {
         return (
             <MuiThemeProvider>
                 <Paper style={style}>
-                    {console.log('============================================>', this.props)}
                     {
                         this.props.menuItem.map(function (el) {
                            return <Link to={`/products/${el.type}`} key={el.id} className={'menu'}>

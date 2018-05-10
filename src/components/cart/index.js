@@ -106,7 +106,8 @@ class Cart extends React.Component {
                                     stripedRows={this.state.stripedRows}
                                 >
 
-                                    {this.props.products.products.map((el) => {
+                                    {this.props.products.map((el) => {
+                                        console.log(this.props, ' cart table');
                                         for (let key in this.props.productCart){
 
                                             if(el.id.toString() === key) {
@@ -140,7 +141,7 @@ class Cart extends React.Component {
 const mapStateToProps = (state) => ({
 
     productCart: state.loadProductCart,
-    products: state.loadCategory
+    products: state.loadProducts
 
 });
 

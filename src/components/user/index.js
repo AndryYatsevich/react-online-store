@@ -1,21 +1,26 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
+import {loadProducts} from "./action";
 
 class User extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = { name: 'User_name', cart: this.props.cart, price: 0, count: 0};
+        this.state = {name: 'User_name', cart: this.props.cart, price: 0, count: 0};
 
+    }
+
+    componentWillMount() {
+        this.props.loadProducts();
     }
 
     cartInfo = () => {
 
         let cartCount = 0;
         let cartPrice = 0;
-         this.props.products.products.map((el) => {
-            for (let key in this.props.cart){
-                if(el.id.toString() === key) {
+        this.props.products.map((el) => {
+            for (let key in this.props.cart) {
+                if (el.id.toString() === key) {
                     let countProduct = this.props.cart[key];
                     cartCount += countProduct;
                     cartPrice += el.price * countProduct;
@@ -36,15 +41,15 @@ class User extends React.Component {
         return (
             <div className={'user'}>
                 <Link to={'/cart'} key={'cart'}>
-                <div>Welcome, {this.state.name}!</div>
-                <div className={'wrap-user-info'}>
-                    <div className={'user-avatar'}>Картинка</div>
-                    <div className={'user-info'}>
-                        My cart <br />
-                        {this.cartInfo()}
-                    </div>
+                    <div>Welcome, {this.state.name}!</div>
+                    <div className={'wrap-user-info'}>
+                        <div className={'user-avatar'}>Картинка</div>
+                        <div className={'user-info'}>
+                            My cart <br/>
+                            {this.cartInfo()}
+                        </div>
 
-                </div>
+                    </div>
                 </Link>
 
             </div>
@@ -55,7 +60,15 @@ class User extends React.Component {
 
 const mapStateToProps = (state) => ({
     cart: state.loadProductCart,
-    products: state.loadCategory
+    products: state.loadProducts,
+    products1: state.loadProducts
+
 });
 
-export default connect(mapStateToProps)(User);
+export default connect(
+    mapStateToProps,
+    {
+
+        loadProducts
+    }
+)(User);

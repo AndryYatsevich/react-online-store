@@ -1,14 +1,13 @@
-import Axios from 'axios';
-import menuItem from './constants';
+import Axios from "axios/index";
+import products from "./constants";
 
-
-export const loadMenuItem = () => (dispatch) => {
+export const loadProducts = () => (dispatch) => {
 
     Axios
-        .get('/menu.json')
+        .get('/products.json')
         .then((res) => {
             dispatch({
-                    type: menuItem.LOAD_MENU_ITEM,
+                    type: products.LOAD_PRODUCTS,
                     payload: res.data
                 }
             );
