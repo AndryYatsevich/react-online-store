@@ -14,6 +14,10 @@ class User extends React.Component {
         this.props.loadProducts();
     }
 
+   /* shouldComponentUpdate() {
+        //return false;
+
+    };*/
     cartInfo = () => {
 
         let cartCount = 0;

@@ -4,9 +4,10 @@ import faqItem from '../constants/faqItem';
 export const loadQuestionItem = () => (dispatch) => {
 
     let promise = new Promise((resolve, reject) => {
-          resolve(Axios.get('/faq.json'));
 
-          reject(new Error("error"));
+          resolve(Axios.get('/faq1.json'));
+
+        reject(new Error("errorcfsdfsd"));
 
     });
 
@@ -17,9 +18,9 @@ export const loadQuestionItem = () => (dispatch) => {
                     payload: res.data
                 }
             );
-            console.log(res.data);
+            console.log(res.status);
         })
-        .catch((err) => {
-            console.log('An error occurred!', err);
+        .catch((error) => {
+            console.log('An error occurred!' + error.message, error);
         });
 };

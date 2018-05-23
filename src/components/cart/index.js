@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {connect} from "react-redux";
-import {deleteProductToCartAction, updateProductToCartAction} from "../../action/addProductToCartAction";
+import {deleteProductToCartAction, updateProductToCartAction, addProductToCartAction} from "../../action/addProductToCartAction";
 import FlatButton from 'material-ui/FlatButton';
 import {
     Table,
@@ -35,7 +35,9 @@ class Cart extends React.Component {
 
     deleteProduct = (el) => {
 
-        let productId = el.id;
+        this.props.deleteProductToCartAction(el.id);
+
+   /*     let productId = el.id;
         let productCart = {};
         for (let key in this.props.productCart) {
             productCart[key] = this.props.productCart[key];
@@ -50,17 +52,11 @@ class Cart extends React.Component {
         delete productCart[productId];
         this.props.deleteProductToCartAction(productCart);
     }
-
+*/
 
     };
     addMoreProduct = (el) => {
-        let productId = el.id;
-        let productCart = {};
-        for (let key in this.props.productCart) {
-            productCart[key] = this.props.productCart[key];
-        }
-        productCart[productId] += 1;
-        this.props.updateProductToCartAction(productCart);
+         this.props.addProductToCartAction(el.id);
     };
     render() {
         const style = {
@@ -147,7 +143,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     deleteProductToCartAction: product => (dispatch(deleteProductToCartAction(product))),
-    updateProductToCartAction: product => (dispatch(updateProductToCartAction(product)))
+    updateProductToCartAction: product => (dispatch(updateProductToCartAction(product))),
+    addProductToCartAction: product => (dispatch(addProductToCartAction(product)))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
